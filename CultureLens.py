@@ -35,4 +35,4 @@ if user_input != "":
             recommend.append(key)
 
     # 추천 출력
-    st.write(f"이번엔 {recommend[0]}이나 "f"{recommend[1]}는 어떠신가요?")
+    st.write(f"이번엔 {recommend[0]}이/나 "f"{recommend[1]}는 어떠신가요?")
