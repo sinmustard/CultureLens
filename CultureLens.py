@@ -21,15 +21,18 @@ user_input = st.text_input("궁금한 문화재 이름을 입력하세요: ")
 # 함수 실행
 result = get_docent_info(user_input)
 
-# 출력
-st.write(result)
+if user_input != "":
+    #설명 찾기
+    result = culture_db.get(user_input,"문화재 정보 없음")
+    # 출력
+    st.write(result)
 
-recommend = []
+    recommend = []
 
-for key in culture_db.keys():
+    for key in culture_db.keys():
         # 사용자가 입력한 건 제외
         if key != user_input:
             recommend.append(key)
 
-# 추천 출력
-st.write(f"이번엔 {recommend[0]}이나 "f"{recommend[1]}는 어떠신가요?")
+    # 추천 출력
+    st.write(f"이번엔 {recommend[0]}이나 "f"{recommend[1]}는 어떠신가요?")
