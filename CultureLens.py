@@ -8,8 +8,6 @@ culture_db = {
     "석굴암": "정교하게 설계된 화강암 석굴 사원입니다."
 }
 
-#문화재 이름 불러오기
-
 # 문화재 설명을 찾아주는 함수
 def get_docent_info(name):
     # 입력값으로 백엔드에서 데이터 처리
@@ -25,6 +23,21 @@ def has_batchim(word):
 
 # 사용자 인터페이스
 user_input = st.text_input("궁금한 문화재 이름을 입력하세요: ")
+
+#문화재 이름 불러오기
+search_list = []
+
+for key in culture_db.keys():
+
+    if user_input in key:
+        search_list.append(key)
+
+# 검색 결과 표시
+if user_input != "":
+
+    selected = st.selectbox("검색 결과",search_list)
+
+    st.write(culture_db[selected])
 
 # 함수 실행
 result = get_docent_info(user_input)
