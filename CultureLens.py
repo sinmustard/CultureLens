@@ -8,7 +8,7 @@ culture_db = {
 # 문화재 설명을 찾아주는 함수
 def get_docent_info(name):
     # 입력값으로 백엔드에서 데이터 처리
-    info = culture_db.get[user_input]
+    info = culture_db.get(user_input)
     return info
 
 # 사용자 인터페이스
