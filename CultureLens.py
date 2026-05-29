@@ -11,7 +11,7 @@ culture_db = {
 # 문화재 설명을 찾아주는 함수
 def get_docent_info(name):
     # 입력값으로 백엔드에서 데이터 처리
-    info = culture_db.get(user_input)
+    info = culture_db.get(name)
     return info
 
 #받침의 여부 판별
@@ -39,20 +39,16 @@ if user_input != "":
 
     st.write(culture_db[selected])
 
-# 함수 실행
-result = get_docent_info(user_input)
+    # 함수 실행
+    result = get_docent_info(selected)
 
-if user_input != "":
-    #설명 찾기
-    result = culture_db.get(user_input,"문화재 정보 없음")
-    # 출력
     st.write(result)
 
     recommend_list = []
 
     for key in culture_db.keys():
         # 사용자가 입력한 건 제외
-        if key != user_input:
+        if key != selected:
             recommend_list.append(key)
     
     random_recommend = random.choice(recommend_list)
