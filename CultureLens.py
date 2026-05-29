@@ -1,4 +1,5 @@
 import streamlit as st
+import random
 
 # 문화재 정보를 담고 있는 딕셔너리 - API
 culture_db = {
@@ -34,16 +35,19 @@ if user_input != "":
     # 출력
     st.write(result)
 
-    recommend = []
+    recommend_list = []
 
     for key in culture_db.keys():
         # 사용자가 입력한 건 제외
         if key != user_input:
-            recommend.append(key)
-    name = recommend[0]
-    if has_batchim(name):
+            recommend_list.append(key)
+    
+    random_recommend = random.choice(recommend_list)
+
+    if has_batchim(random_recommend):
         particle = "은"
     else :
         particle = "는"
+
     # 추천 출력
-    st.write(f"이번엔 {name}{particle} 어떠신가요?")
+    st.write(f"이번엔 {random_recommend}{particle} 어떠신가요?")
