@@ -15,6 +15,13 @@ def get_docent_info(name):
     info = culture_db.get(user_input)
     return info
 
+#받침의 여부 판별
+def has_batchim(word):
+
+    last = word[-1]
+
+    return (ord(last) - ord("가")) % 28 != 0
+
 # 사용자 인터페이스
 user_input = st.text_input("궁금한 문화재 이름을 입력하세요: ")
 
@@ -33,6 +40,10 @@ if user_input != "":
         # 사용자가 입력한 건 제외
         if key != user_input:
             recommend.append(key)
-
+    name = recommend[0]
+    if has_batchim(name):
+        particle = "은"
+    else :
+        particle = "는"
     # 추천 출력
-    st.write(f"이번엔 {recommend[0]}이/나 "f"{recommend[1]}는 어떠신가요?")
+    st.write(f"이번엔 {name}{particle} 어떠신가요?")
