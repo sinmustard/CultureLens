@@ -37,8 +37,6 @@ if user_input != "":
 
     selected = st.selectbox("검색 결과",search_list)
 
-    st.write(culture_db[selected])
-
     # 함수 실행
     result = get_docent_info(selected)
 
